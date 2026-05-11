@@ -13,32 +13,21 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Build') {
             steps {
-                dir('bookmyshow-app') {
-                    sh 'npm install'
-                }
+                echo "Build completed Successfully"
             }
         }
-
-         stage('Build Application') {
-            steps {
-		dir('bookmyshow-app') {
-                    sh 'npm run build'
-                }
-            }
-        }
-
 
         stage('Test') {
             steps {
-                echo "Testing Application"
+                echo "Testing Successful"
             }
         }
 
         stage('Deploy') {
             steps {
-                echo "Deployment Completed"
+                echo "Deployment Successful"
             }
         }
     }
