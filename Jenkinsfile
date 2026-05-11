@@ -13,15 +13,21 @@ pipeline {
             }
         }
 
-        stage('Build') {
+         stage('Build') {
             steps {
-                echo "Build Started"
+                sh 'mvn clean package'
             }
         }
+
 
         stage('Test') {
             steps {
                 echo "Testing Application"
+            }
+        }
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t myapp:v1 .'
             }
         }
 
