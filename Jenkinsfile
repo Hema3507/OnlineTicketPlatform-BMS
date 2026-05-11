@@ -15,13 +15,17 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                dir('bookmyshow-app') {
+                    sh 'npm install'
+                }
             }
         }
 
          stage('Build Application') {
             steps {
-                sh 'npm run build'
+		dir('bookmyshow-app') {
+                    sh 'npm run build'
+                }
             }
         }
 
