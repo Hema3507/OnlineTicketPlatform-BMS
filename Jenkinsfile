@@ -13,9 +13,15 @@ pipeline {
             }
         }
 
-         stage('Build') {
+        stage('Install Dependencies') {
             steps {
-                sh 'mvn clean package'
+                sh 'npm install'
+            }
+        }
+
+         stage('Build Application') {
+            steps {
+                sh 'npm run build'
             }
         }
 
@@ -23,11 +29,6 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Testing Application"
-            }
-        }
-        stage('Docker Build') {
-            steps {
-                sh 'docker build -t myapp:v1 .'
             }
         }
 
